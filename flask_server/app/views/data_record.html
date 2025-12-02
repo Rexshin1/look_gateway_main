@@ -1,0 +1,75 @@
+{% extends 'layouts/app.html' %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="box">
+            <header>
+                <div class="icons"><i class="fa fa-table"></i></div>
+                <h5>All Sensor Data Records</h5>
+            </header>
+            <div class="body" style="min-height: 60vh;">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-condensed table-hover table-striped" id="dataTable">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Device ID</th>
+                                <th>Power (W)</th>
+                                <th>Humidity (%)</th>
+                                <th>Temp (°C)</th>
+                                <th>Weather</th>
+                                <th>Fire</th>
+                                <th>Gas</th>
+                                <th>Smoke</th>
+                                <th>Lux</th>
+                                <th>Timestamp</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if records %}
+                            {% for record in records %}
+                            <tr>
+                                <td>{{ loop.index }}</td>
+                                <td>{{ record.device_id }}</td>
+                                <td>{{ "%.2f"|format(record.power) if record.power is not none else "-" }}</td>
+                                <td>{{ "%.2f"|format(record.humidity) if record.humidity is not none else "-" }}</td>
+                                <td>{{ "%.2f"|format(record.temperature) if record.temperature is not none else "-" }}
+                                </td>
+                                <td>{{ record.weather if record.weather else "-" }}</td>
+                                <td>{{ "Detected" if record.fire == 1 else "Safe" if record.fire == 0 else "-" }}</td>
+                                <td>{{ "%.2f"|format(record.gas) if record.gas is not none else "-" }}</td>
+                                <td>{{ "%.2f"|format(record.smoke) if record.smoke is not none else "-" }}</td>
+                                <td>{{ "%.2f"|format(record.lux) if record.lux is not none else "-" }}</td>
+                                <td>{{ record.created_at|wib_format }}</td>
+                            </tr>
+                            {% endfor %}
+                            {% else %}
+                            <tr>
+                                <td colspan="11" class="text-center text-muted">Tidak ada data</td>
+                            </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block javascript %}
+<script>
+    $(function () {
+        $('#dataTable').dataTable({
+            "aaSorting": [],
+            "bProcessing": true,
+            "bServerSide": false,
+            "aLengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
+            "iDisplayLength": 10
+        });
+    });
+</script>
+{% endblock %}

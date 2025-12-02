@@ -1,0 +1,281 @@
+{% extends "layouts/app.html" %}
+
+{% block content %}
+<!-- /#left -->
+
+<div class="inner bg-light lter">
+    <div class="text-center">
+        <!-- BAGIAN STATS ATAS -->
+        <ul class="stats_box">
+            <li>
+                <div class="stat_text padding">
+                    <strong>CPU</strong>Temperature
+                    <span class="percent "><span id="temp">0</span> °C</span>
+                </div>
+            </li>
+            <li>
+                <div class="stat_text">
+                    <strong>CPU</strong>Usage
+                    <span class="percent "><span id="cpu_usage">0</span>%</span>
+                </div>
+            </li>
+            <li>
+                <div class="stat_text">
+                    <strong>MEMORY</strong>Usage
+                    <span class="percent"> <span id="memory">0</span>%</span>
+                </div>
+            </li>
+            <li>
+                <div class="stat_text">
+                    <strong>DISK</strong>Usage
+                    <span class="percent "> <span id="disk">0</span>%</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <hr>
+
+    <!-- BAGIAN TOMBOL CEPAT -->
+    <div class="text-center">
+        <a class="quick-btn" href="#">
+            <i class="fa fa-bolt fa-2x"></i>
+            <span>Power</span>
+            <span class="label label-primary">2</span>
+        </a>
+        <a class="quick-btn" href="#">
+            <i class="fa fa-water fa-2x"></i>
+            <span>Water</span>
+            <span class="label bg-blue lter">0</span>
+        </a>
+        <a class="quick-btn" href="#">
+            <i class="fa fa-building fa-2x"></i>
+            <span>Humidity</span>
+            <span class="label bg-green dker">0</span>
+        </a>
+        <a class="quick-btn" href="#">
+            <i class="fa fa-thermometer fa-2x"></i>
+            <span>Temp</span>
+            <span class="label bg-light dker">0</span>
+        </a>
+        <a class="quick-btn muted" href="#">
+            <i class="fa fa-cloud-rain fa-2x"></i>
+            <span>Weather</span>
+            <span class="label bg-green lt">0</span>
+        </a>
+        <a class="quick-btn " href="#">
+            <i class="fa fa-fire fa-2x"></i>
+            <span>Fire</span>
+            <span class="label bg-brick lter">2</span>
+        </a>
+        <a class="quick-btn" href="#">
+            <i class="fa fa-burn fa-2x"></i>
+            <span>Gas</span>
+            <span class="label bg-red dk">0</span>
+        </a>
+        <a class="quick-btn" href="#">
+            <i class="fas fa-smog fa-2x"></i>
+            <span>Smoke</span>
+            <span class="label label-default">0</span>
+        </a>
+        <a class="quick-btn" href="#">
+            <i class="fa fa-lightbulb fa-2x"></i>
+            <span>LUX</span>
+            <span class="label bg-orange lter">0</span>
+        </a>
+    </div>
+    <hr>
+
+
+
+    <!-- BAGIAN ROW UTAMA -->
+    <div class="row">
+        <!-- 1. LINE CHART (DIBALIKIN TAPI DIAM) -->
+        <div class="col-lg-4">
+            <div class="box inverse">
+                <header>
+                    <h5>Line Chart</h5>
+                </header>
+                <!-- Container Chart tetap ada -->
+                <div class="body" id="trigo" style="height: 250px;"></div>
+            </div>
+        </div>
+
+        <!-- 2. Network Device (Balik ke col-lg-4) -->
+        <div class="col-lg-4">
+            <div class="box">
+                <header>
+                    <h5>Network Device</h5>
+                </header>
+                <div class="body">
+                    <table class="table table-condensed table-hovered ">
+                        <thead>
+                            <tr>
+                                <th>Device ID <i class="fa sort"></i></th>
+                                <th>Device Name <i class="fa sort"></i></th>
+                                <th>Status<i class="fa sort"></i></th>
+                                <th>Ping <i class="fa sort"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="active">
+                                <td>Andorra</td>
+                                <td>1126</td>
+                                <td>1126</td>
+                                <td>00:00:15</td>
+                            </tr>
+                            <tr>
+                                <td>Belarus</td>
+                                <td>350</td>
+                                <td>350</td>
+                                <td>00:01:20</td>
+                            </tr>
+                            <tr class="danger">
+                                <td>Paraguay</td>
+                                <td>43</td>
+                                <td>43</td>
+                                <td>00:00:30</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. Last Record (Balik ke col-lg-4) -->
+        <div class="col-lg-4">
+            <div class="box inverse">
+                <header>
+                    <h5>Last Record</h5>
+                </header>
+                <div class="body">
+                    <table class="table table-condensed table-hovered ">
+                        <tbody>
+                            <tr class="active">
+                                <td>Andorra</td>
+                                <td>1126</td>
+                                <td>00:00:15</td>
+                            </tr>
+                            <tr>
+                                <td>Belarus</td>
+                                <td>350</td>
+                                <td>00:01:20</td>
+                            </tr>
+                            <tr class="danger">
+                                <td>Paraguay</td>
+                                <td>43</td>
+                                <td>00:00:30</td>
+                            </tr>
+                            <tr class="warning">
+                                <td>Malta</td>
+                                <td>547</td>
+                                <td>00:10:20</td>
+                            </tr>
+                            <tr>
+                                <td>Australia</td>
+                                <td>560</td>
+                                <td>00:00:10</td>
+                            </tr>
+                            <tr>
+                                <td>Kenya</td>
+                                <td>97</td>
+                                <td>00:20:00</td>
+                            </tr>
+                            <tr class="success">
+                                <td>Italy</td>
+                                <td>2450</td>
+                                <td>00:10:00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.inner -->
+{% endblock %}
+
+{% block javascript %}
+<script>
+    $(document).ready(function () {
+
+        // --- SETUP CHART (Biar Kotaknya Muncul) ---
+        let data = [];
+        const totalPoints = 100;
+
+        function updateData(newPoint) {
+            if (data.length > 0) data = data.slice(1);
+            data.push(newPoint);
+            while (data.length < totalPoints) {
+                data.unshift(0);
+            }
+            let res = [];
+            for (let i = 0; i < data.length; ++i) {
+                res.push([i, data[i]]);
+            }
+            return res;
+        }
+
+        const options = {
+            series: { shadowSize: 0 },
+            yaxis: { min: 0, max: 100 },
+            xaxis: { show: false },
+        };
+
+        // GAMBAR CHART KOSONG SEKALI SAJA (Biar bingkainya ada)
+        // Kita isi 0 semua biar garisnya datar di bawah
+        const plot = $.plot($("#trigo"), [updateData(0)], options);
+
+
+        // --- UPDATE ANGKA SYSTEM (Tanpa Menggerakkan Grafik) ---
+        function updateSystemStats() {
+            $.ajax({
+                url: '/api/system_stats',
+                type: 'GET',
+                success: function (response) {
+                    // Update Text Angka (Persen CPU, Memory, Disk, Temp)
+                    $('#cpu_usage').text(response.cpu);
+                    $('#memory').text(response.ram);
+                    $('#disk').text(response.disk);
+                    $('#temp').text(response.temp);
+
+                    // SAYA HAPUS BAGIAN plot.setData()
+                    // Jadi grafik "kuning" tidak akan berjalan/gerak lagi.
+                },
+                error: function (error) {
+                    console.log("Gagal ambil stats lokal.");
+                }
+            });
+        }
+
+        // Update angka setiap 2 detik
+        setInterval(updateSystemStats, 2000);
+        updateSystemStats();
+
+
+        // --- MQTT SCRIPT ---
+        const client = mqtt.connect('ws://{{ hostmqtt }}:8181');
+
+        client.on('connect', function () {
+            $('#status').text('Connected');
+            const topic = 'GWLK20241210000001/status';
+            client.subscribe(topic, function (err) {
+                if (!err) {
+                    console.log(`Subscribed to topic: ${topic}`);
+                }
+            });
+        });
+
+        client.on('message', function (topic, message) {
+            data = JSON.parse(message.toString());
+            // Update Text kalau ada data MQTT
+            $('#temp').text(Number(data.temperature).toFixed(2));
+            $('#cpu_usage').text(Number(data.cpu_usage).toFixed(2));
+            $('#memory').text(Number(data.memory).toFixed(2));
+            $('#disk').text(Number(data.disk).toFixed(2));
+        });
+
+    });
+</script>
+{% endblock %}

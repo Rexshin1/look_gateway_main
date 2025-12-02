@@ -1,0 +1,141 @@
+{
+  "client": "Thunder Client",
+  "collectionName": "Look Gateway API",
+  "dateExported": "2025-12-02T08:55:00.000Z",
+  "version": "1.1",
+  "folders": [],
+  "requests": [
+    {
+      "containerId": "",
+      "sortNum": 10000,
+      "headers": [
+        {
+          "name": "X-API-TOKEN",
+          "value": "LOOK-SECURE-TOKEN-2024"
+        }
+      ],
+      "colId": "look_gateway_collection",
+      "name": "List All Devices",
+      "url": "http://127.0.0.1:5001/api/list_devices",
+      "method": "POST",
+      "modified": "2025-12-02T08:55:00.000Z",
+      "created": "2025-12-02T08:55:00.000Z",
+      "_id": "req_list_devices",
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "",
+        "form": []
+      },
+      "tests": []
+    },
+    {
+      "containerId": "",
+      "sortNum": 20000,
+      "headers": [
+        {
+          "name": "X-API-TOKEN",
+          "value": "LOOK-SECURE-TOKEN-2024"
+        },
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "colId": "look_gateway_collection",
+      "name": "Add New Device",
+      "url": "http://127.0.0.1:5001/api/add_device",
+      "method": "POST",
+      "modified": "2025-12-02T08:55:00.000Z",
+      "created": "2025-12-02T08:55:00.000Z",
+      "_id": "req_add_device",
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n    \"device_id\": \"ID_001\",\n    \"device_name\": \"Sensor suhu\",\n    \"type_device\": \"temperature\",\n    \"status\": 1\n}",
+        "form": []
+      },
+      "tests": []
+    },
+    {
+      "containerId": "",
+      "sortNum": 30000,
+      "headers": [
+        {
+          "name": "X-API-TOKEN",
+          "value": "LOOK-SECURE-TOKEN-2024"
+        },
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "colId": "look_gateway_collection",
+      "name": "Update Device",
+      "url": "http://127.0.0.1:5001/api/update_device",
+      "method": "POST",
+      "modified": "2025-12-02T08:55:00.000Z",
+      "created": "2025-12-02T08:55:00.000Z",
+      "_id": "req_update_device",
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n    \"device_id\": \"ID_001\",\n    \"device_name\": \"Sensor suhu Updated\",\n    \"type_device\": \"temperature\",\n    \"status\": 0\n}",
+        "form": []
+      },
+      "tests": []
+    },
+    {
+      "containerId": "",
+      "sortNum": 40000,
+      "headers": [
+        {
+          "name": "X-API-TOKEN",
+          "value": "LOOK-SECURE-TOKEN-2024"
+        },
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "colId": "look_gateway_collection",
+      "name": "Delete Device",
+      "url": "http://127.0.0.1:5001/api/delete_device",
+      "method": "POST",
+      "modified": "2025-12-02T08:55:00.000Z",
+      "created": "2025-12-02T08:55:00.000Z",
+      "_id": "req_delete_device",
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n    \"device_id\": \"ID_001\"\n}",
+        "form": []
+      },
+      "tests": []
+    },
+    {
+      "containerId": "",
+      "sortNum": 50000,
+      "headers": [
+        {
+          "name": "X-API-TOKEN",
+          "value": "LOOK-SECURE-TOKEN-2024"
+        }
+      ],
+      "colId": "look_gateway_collection",
+      "name": "Get Data Records",
+      "url": "http://127.0.0.1:5001/api/records",
+      "method": "GET",
+      "modified": "2025-12-02T08:55:00.000Z",
+      "created": "2025-12-02T08:55:00.000Z",
+      "_id": "req_get_records",
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "",
+        "form": []
+      },
+      "tests": []
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+from flask_server.app import db
+
+class Device(db.Model):
+    __tablename__ = 'devices'
+    id = db.Column(db.Integer, primary_key=True)
+    device_id = db.Column(db.String(100), nullable=False)
+    device_name = db.Column(db.String(100), nullable=False)
+    type_device = db.Column(db.String(20), nullable=False)
+    status = db.Column(db.Integer, nullable=False)
+
+    def __repr__(self):
+        return f"<Device {self.device_id} - ${self.type_device}>"
+    def to_dict(self):
+        """Convert the Device object to a dictionary for JSON response."""
+        return {
+            'id': self.id,
+            'device_name': self.device_name,
+            'device_id': self.device_id,
+            'type_device': self.type_device,
+            'status': self.status
+        }
+    
+
+class DeviceRecord(db.Model):
+    __tablename__ = 'device_records'
+    id = db.Column(db.Integer, primary_key=True)
+    device_id = db.Column(db.String(100), nullable=False)
+    
+    # Sensor Data Columns
+    power = db.Column(db.Float, nullable=True)
+    humidity = db.Column(db.Float, nullable=True)
+    temperature = db.Column(db.Float, nullable=True)
+    weather = db.Column(db.String(50), nullable=True)
+    fire = db.Column(db.Integer, nullable=True) # 0 or 1
+    gas = db.Column(db.Float, nullable=True)
+    smoke = db.Column(db.Float, nullable=True)
+    lux = db.Column(db.Float, nullable=True)
+    
+    created_at = db.Column(db.DateTime, default=db.func.current_timestamp())
+    
+    def __repr__(self):
+        return f"<DeviceRecord {self.device_id}>"
+    
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'device_id': self.device_id,
+            'power': self.power,
+            'humidity': self.humidity,
+            'temperature': self.temperature,
+            'weather': self.weather,
+            'fire': self.fire,
+            'gas': self.gas,
+            'smoke': self.smoke,
+            'lux': self.lux,
+            'created_at': self.created_at
+        }
+    
+class NetworkDevice(db.Model):
+    __tablename__ = 'network_devices'
+    id = db.Column(db.Integer, primary_key=True)
+    parent_id = db.Column(db.String(100), nullable=True)
+    device_id = db.Column(db.String(100), nullable=False)
+    device_name = db.Column(db.String(100), nullable=False)
+    device_type = db.Column(db.String(50), nullable=False)
+    serial_number = db.Column(db.String(50), nullable=True)
+    status = db.Column(db.Integer, nullable=False)
+
+    def __repr__(self):
+        return f"<Device {self.device_id} - ${self.device_name}>"
+    
